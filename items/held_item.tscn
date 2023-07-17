@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh3elvg8jkwtq"]
+
+[ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="1_q64kd"]
+[ext_resource type="Script" path="res://items/held_item.gd" id="1_uwts8"]
+[ext_resource type="Shader" path="res://effects/outline.gdshader" id="2_v7t72"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3yel"]
+shader = ExtResource("2_v7t72")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="HeldItem" type="Node2D"]
+script = ExtResource("1_uwts8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q3yel")
+texture = ExtResource("1_q64kd")
+offset = Vector2(10, 0)

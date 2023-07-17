@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7y8uwe7smlij"]
+
+[ext_resource type="Script" path="res://entities/thrown-item/thrown_item.gd" id="1_lmm7d"]
+[ext_resource type="PackedScene" uid="uid://dx4l162npnd6g" path="res://tools/hit-and-hurt-boxes/hitbox.tscn" id="2_jx7sf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q02nl"]
+radius = 4.0
+
+[node name="ThrownItem" type="CharacterBody2D"]
+script = ExtResource("1_lmm7d")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("2_jx7sf")]
+collision_mask = 4
+damage = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_q02nl")

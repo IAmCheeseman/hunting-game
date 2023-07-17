@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bm1dmbw4reyyh"]
+
+[ext_resource type="Shader" path="res://effects/shadow.gdshader" id="1_ecdmu"]
+
+[resource]
+shader = ExtResource("1_ecdmu")
+shader_parameter/color = Color(0.352941, 0.772549, 0.309804, 1)
+shader_parameter/on = 1.0
+shader_parameter/flipped = 1.0

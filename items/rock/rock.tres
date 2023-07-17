@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bhp1wkdkq3e2p"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_fdc42"]
+[ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="2_r5yvk"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_hkhqe"]
+
+[sub_resource type="Resource" id="Resource_hvybo"]
+script = ExtResource("3_hkhqe")
+id = "throwing_damage"
+value = "5"
+
+[sub_resource type="Resource" id="Resource_ctorn"]
+script = ExtResource("3_hkhqe")
+id = "stuns"
+value = ""
+
+[sub_resource type="Resource" id="Resource_rkioo"]
+script = ExtResource("3_hkhqe")
+id = "element"
+value = ""
+
+[resource]
+script = ExtResource("1_fdc42")
+texture = ExtResource("2_r5yvk")
+translation_id = "rock"
+throw_aerodynamicy = 32.0
+throw_damage = 5
+rarity = 3
+spawn_chance = 1.0
+tooltip = Array[ExtResource("3_hkhqe")]([SubResource("Resource_hvybo"), SubResource("Resource_ctorn"), SubResource("Resource_rkioo")])

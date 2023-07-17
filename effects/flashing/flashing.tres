@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b68sa26ag05sq"]
+
+[ext_resource type="Shader" path="res://effects/flashing/flashing.gdshader" id="1_svm48"]
+
+[resource]
+shader = ExtResource("1_svm48")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/on = 0.0

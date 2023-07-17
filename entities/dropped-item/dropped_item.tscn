@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://520qnvnwq62y"]
+
+[ext_resource type="Script" path="res://entities/dropped-item/dropped_item.gd" id="1_3vqor"]
+[ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="2_4r5xq"]
+[ext_resource type="Shader" path="res://effects/outline.gdshader" id="2_gprxs"]
+[ext_resource type="PackedScene" uid="uid://bcgoeqa11j8fq" path="res://tools/player-detection/player_detector.tscn" id="2_ohjry"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxfqc"]
+shader = ExtResource("2_gprxs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2h5wk"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xuik"]
+radius = 5.0
+
+[node name="DroppedItem" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 0
+script = ExtResource("1_3vqor")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qxfqc")
+texture = ExtResource("2_4r5xq")
+
+[node name="PlayerDetection" parent="." instance=ExtResource("2_ohjry")]
+check_sight = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_2h5wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7xuik")

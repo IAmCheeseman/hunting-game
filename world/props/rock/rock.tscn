@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvp6g0sktdidb"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4e8kxc6pn5" path="res://world/props/prop.tscn" id="1_v4oer"]
+[ext_resource type="Texture2D" uid="uid://cq0bxeif458i2" path="res://world/props/rock/rock.png" id="2_5bt0l"]
+[ext_resource type="Resource" uid="uid://bhp1wkdkq3e2p" path="res://items/rock/rock.tres" id="2_8b81t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsi4i"]
+radius = 4.0
+height = 26.0
+
+[node name="Rock" instance=ExtResource("1_v4oer")]
+item = ExtResource("2_8b81t")
+spawn_min = 0
+
+[node name="Marker2D1" type="Marker2D" parent="PropPositions" index="0"]
+position = Vector2(11, 10)
+
+[node name="Marker2D2" type="Marker2D" parent="PropPositions" index="1"]
+position = Vector2(-18, 2)
+
+[node name="Marker2D3" type="Marker2D" parent="PropPositions" index="2"]
+position = Vector2(-13, -9)
+
+[node name="Marker2D4" type="Marker2D" parent="PropPositions" index="3"]
+position = Vector2(17, -16)
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_5bt0l")
+offset = Vector2(0, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nsi4i")

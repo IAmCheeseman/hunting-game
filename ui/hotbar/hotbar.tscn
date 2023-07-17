@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cje2dyuu4hbv8"]
+
+[ext_resource type="Script" path="res://ui/hotbar/hotbar.gd" id="1_7j1yt"]
+[ext_resource type="Theme" uid="uid://dkldn22xdatv1" path="res://ui/theme.tres" id="1_yps80"]
+
+[node name="Hotbar" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_yps80")
+alignment = 1
+script = ExtResource("1_7j1yt")
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Items" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1

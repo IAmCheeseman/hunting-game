@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfi4e8kxc6pn5"]
+
+[ext_resource type="Script" path="res://world/props/prop.gd" id="1_evo2g"]
+
+[node name="Prop" type="Node2D"]
+script = ExtResource("1_evo2g")
+
+[node name="PropPositions" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://boogwrrvj4lrw"]
+
+[ext_resource type="Script" path="res://ui/inventory/tooltip/tooltip_value.gd" id="1_a06eg"]
+
+[node name="TooltipValue" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_a06eg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Damage"
+
+[node name="Dots" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0.443137)
+text = "----------------------------------------------------"
+clip_text = true
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+text = "12"

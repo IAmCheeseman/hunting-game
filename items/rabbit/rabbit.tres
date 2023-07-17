@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c1s54vpvtfpat"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_vfqyl"]
+[ext_resource type="Texture2D" uid="uid://80fxarhdia3b" path="res://items/rabbit/rabbit.png" id="2_ophj8"]
+
+[resource]
+script = ExtResource("1_vfqyl")
+texture = ExtResource("2_ophj8")
+translation_id = "rabbit"
+throw_aerodynamicy = 64.0
+throw_damage = 1
+rarity = 0
+spawn_chance = 1.0
+tooltip = Array[Resource("res://items/tooltip_data.gd")]([])

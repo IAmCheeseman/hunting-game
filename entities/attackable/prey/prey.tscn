@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv33g4vg1miot"]
+
+[ext_resource type="PackedScene" uid="uid://noj7xpm18gp7" path="res://entities/attackable/attackable.tscn" id="1_gl43u"]
+[ext_resource type="Script" path="res://entities/attackable/prey/prey.gd" id="2_1qslf"]
+
+[node name="Prey" instance=ExtResource("1_gl43u")]
+script = ExtResource("2_1qslf")
+
+[connection signal="dead" from="DamageManager" to="." method="_on_damage_manager_dead"]

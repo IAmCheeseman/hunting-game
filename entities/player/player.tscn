@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://725eck7yiftm"]
+
+[ext_resource type="PackedScene" uid="uid://ckpyywatmqmne" path="res://entities/base-entity/entity.tscn" id="1_bxny5"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="2_wpprg"]
+[ext_resource type="Material" uid="uid://b68sa26ag05sq" path="res://effects/flashing/flashing.tres" id="3_0ny0u"]
+[ext_resource type="Texture2D" uid="uid://dwn3eru6uqs0w" path="res://entities/player/player.png" id="4_aeqxq"]
+[ext_resource type="Script" path="res://tools/camera/camera.gd" id="4_nq24i"]
+[ext_resource type="Script" path="res://tools/sound-manager/sound_manager.gd" id="6_fyg4k"]
+[ext_resource type="PackedScene" uid="uid://0tphhqi7kk4t" path="res://ui/hud/hud.tscn" id="7_2mf4i"]
+[ext_resource type="Shader" path="res://effects/palette.gdshader" id="7_y0mn8"]
+[ext_resource type="Texture2D" uid="uid://dhnvh4jyhhwao" path="res://effects/palette.png" id="8_v2ni7"]
+[ext_resource type="Theme" uid="uid://dkldn22xdatv1" path="res://ui/theme.tres" id="10_rwlyj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkrod"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a0eb"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="Animation" id="Animation_ikjks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_itp4k"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_b3owb"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk7by"]
+_data = {
+"RESET": SubResource("Animation_ikjks"),
+"idle": SubResource("Animation_itp4k"),
+"walk": SubResource("Animation_b3owb")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pdkh"]
+shader = ExtResource("7_y0mn8")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 32
+shader_parameter/precision = 0.2
+shader_parameter/palette_in = ExtResource("8_v2ni7")
+shader_parameter/palette_out = ExtResource("8_v2ni7")
+
+[node name="Player" groups=["player"] instance=ExtResource("1_bxny5")]
+y_sort_enabled = true
+collision_layer = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("2_wpprg")
+run_speed = 200.0
+tired_speed = 80.0
+stamina_regen_rate = 30.0
+run_stamina = 40.0
+speed = 110.0
+accel = 350.0
+frict = 450.0
+
+[node name="Sprite" parent="." index="0"]
+material = ExtResource("3_0ny0u")
+texture = ExtResource("4_aeqxq")
+offset = Vector2(0, -7)
+hframes = 6
+
+[node name="CollisionShape" parent="." index="1"]
+visible = false
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nkrod")
+
+[node name="Camera" type="Camera2D" parent="." index="2"]
+position_smoothing_speed = 15.0
+script = ExtResource("4_nq24i")
+
+[node name="Hurtbox" parent="Collisions" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape" parent="Collisions/Hurtbox" index="0"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8a0eb")
+
+[node name="SoundManager" type="Node2D" parent="." index="5"]
+script = ExtResource("6_fyg4k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_jk7by")
+}
+
+[node name="StaminaRegen" type="Timer" parent="." index="7"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Stamina" type="ProgressBar" parent="." index="8"]
+offset_left = -13.0
+offset_top = -19.0
+offset_right = 13.0
+offset_bottom = -15.0
+pivot_offset = Vector2(13, 19)
+theme = ExtResource("10_rwlyj")
+value = 59.11
+show_percentage = false
+
+[node name="Effects" type="CanvasLayer" parent="." index="9"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="Effects" index="0"]
+visible = false
+material = SubResource("ShaderMaterial_6pdkh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
+
+[node name="Hud" parent="CanvasLayer" index="0" instance=ExtResource("7_2mf4i")]

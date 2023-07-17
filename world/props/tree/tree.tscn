@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnf4cg5elih0l"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4e8kxc6pn5" path="res://world/props/prop.tscn" id="1_lkqm2"]
+[ext_resource type="Texture2D" uid="uid://bdf5ftpestm85" path="res://world/props/tree/tree.png" id="2_sjsm1"]
+[ext_resource type="Resource" uid="uid://ckccukxfwq7v4" path="res://items/stick/stick.tres" id="2_sw7fq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62b2m"]
+radius = 3.0
+height = 14.0
+
+[node name="Tree" instance=ExtResource("1_lkqm2")]
+item = ExtResource("2_sw7fq")
+spawn_min = 0
+
+[node name="Marker2D1" type="Marker2D" parent="PropPositions" index="0"]
+position = Vector2(16, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="PropPositions" index="1"]
+position = Vector2(-8, 7)
+
+[node name="Marker2D3" type="Marker2D" parent="PropPositions" index="2"]
+position = Vector2(5, -18)
+
+[node name="Marker2D4" type="Marker2D" parent="PropPositions" index="3"]
+position = Vector2(-12, -7)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_62b2m")
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("2_sjsm1")
+offset = Vector2(0, -23)

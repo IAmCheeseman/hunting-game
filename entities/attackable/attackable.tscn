@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://noj7xpm18gp7"]
+
+[ext_resource type="Script" path="res://entities/attackable/attackable.gd" id="1_811b1"]
+[ext_resource type="PackedScene" uid="uid://js1bpqxxd18t" path="res://tools/hit-and-hurt-boxes/hurtbox.tscn" id="2_0pqy7"]
+[ext_resource type="Script" path="res://tools/damage-manager/damage_manager.gd" id="3_6q1kd"]
+[ext_resource type="PackedScene" uid="uid://bcgoeqa11j8fq" path="res://tools/player-detection/player_detector.tscn" id="4_m84jh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jaih"]
+radius = 93.086
+
+[node name="Attackable" type="CharacterBody2D"]
+collision_layer = 0
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_811b1")
+
+[node name="Scaler" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Scaler"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_0pqy7")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+
+[node name="PlayerDetection" parent="." instance=ExtResource("4_m84jh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_2jaih")
+
+[node name="DamageManager" type="Node" parent="."]
+script = ExtResource("3_6q1kd")
+hurtbox_path = NodePath("../Hurtbox")

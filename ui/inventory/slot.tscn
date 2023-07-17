@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf5tbw0rc7afn"]
+
+[ext_resource type="Theme" uid="uid://dkldn22xdatv1" path="res://ui/theme.tres" id="1_wurqu"]
+[ext_resource type="Script" path="res://ui/inventory/slot.gd" id="1_xvkh3"]
+[ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="2_ef6gx"]
+[ext_resource type="Texture2D" uid="uid://dncm7bc0foljg" path="res://ui/inventory/slot.png" id="3_obmdm"]
+
+[node name="Slot" type="Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 8)
+mouse_filter = 1
+theme = ExtResource("1_wurqu")
+script = ExtResource("1_xvkh3")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(64, 43)
+mouse_filter = 2
+texture = ExtResource("3_obmdm")
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("2_ef6gx")
+stretch_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

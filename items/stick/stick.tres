@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://ckccukxfwq7v4"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_04fdu"]
+[ext_resource type="Texture2D" uid="uid://8j01upts3n6y" path="res://items/stick/stick.png" id="2_ns5q0"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_ig841"]
+
+[sub_resource type="Resource" id="Resource_koy3e"]
+script = ExtResource("3_ig841")
+id = "throwing_damage"
+value = "3"
+
+[sub_resource type="Resource" id="Resource_lebxh"]
+script = ExtResource("3_ig841")
+id = "pierces"
+value = ""
+
+[sub_resource type="Resource" id="Resource_ww003"]
+script = ExtResource("3_ig841")
+id = "element"
+value = ""
+
+[resource]
+script = ExtResource("1_04fdu")
+texture = ExtResource("2_ns5q0")
+translation_id = "stick"
+throw_aerodynamicy = 12.0
+throw_damage = 3
+rarity = 0
+spawn_chance = 1.0
+tooltip = Array[ExtResource("3_ig841")]([SubResource("Resource_koy3e"), SubResource("Resource_lebxh"), SubResource("Resource_ww003")])
