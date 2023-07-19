@@ -103,7 +103,7 @@ func _on_slot_hover_update(slot: Control) -> void:
 		tooltip.set_item(null)
 
 func _unhandled_input(event: InputEvent) -> void: 
-	if not visible:
+	if scale.is_zero_approx():
 		return
 	if event.is_action_pressed("move_item"):
 		if Inventory.data.mouse_slot == null:

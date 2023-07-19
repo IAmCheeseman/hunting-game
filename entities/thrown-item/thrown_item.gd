@@ -42,12 +42,13 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hit(area) -> void:
-	if not item.item.pierces:
-		_drop(Vector2.ZERO)
 	if item.take_damage():
 		# This item should break
 		spark()
 		queue_free()
+		return
+	if not item.item.pierces:
+		_drop(Vector2.ZERO)
 
 func _drop(vel: Vector2) -> void:
 	var drop = Item.create_drop_from(item)
