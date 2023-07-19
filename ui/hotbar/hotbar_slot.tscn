@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="4_dnqe4"]
 
 [node name="Slot" type="Control"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,6 +42,7 @@ stretch_mode = 3
 unique_name_in_owner = true
 visible = false
 modulate = Color(0, 0.741176, 1, 1)
+layout_mode = 0
 offset_left = 1.0
 offset_top = 14.0
 offset_right = 15.0

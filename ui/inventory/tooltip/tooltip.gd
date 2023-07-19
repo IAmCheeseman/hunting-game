@@ -3,7 +3,7 @@ extends Control
 const TOOLTIP_ELEMENT := preload("res://ui/inventory/tooltip/tooltip_value.tscn")
 
 var label_settings = {
-	"damage": Color.RED,
+	"melee_damage": Color.RED,
 	"throwing_damage": Color.RED,
 	"pierces": Color.GREEN,
 	"stuns": Color.CORNFLOWER_BLUE,

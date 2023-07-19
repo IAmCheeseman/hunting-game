@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://c3dbampkfxnbh"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_nm5hp"]
+[ext_resource type="PackedScene" uid="uid://cg3g7g6rq5my" path="res://entities/held-item/swingable/swingable.tscn" id="1_q1wj0"]
+[ext_resource type="Texture2D" uid="uid://brmjdpfu8tqlt" path="res://items/club/club.png" id="3_lifv3"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="4_0io76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_poc85"]
+size = Vector2(20, 24)
+
+[sub_resource type="Resource" id="Resource_knyyj"]
+script = ExtResource("4_0io76")
+id = "melee_damage"
+value = "7"
+
+[sub_resource type="Resource" id="Resource_xuq44"]
+script = ExtResource("4_0io76")
+id = "throwing_damage"
+value = "12"
+
+[sub_resource type="Resource" id="Resource_f6n44"]
+script = ExtResource("4_0io76")
+id = "durability"
+value = "7"
+
+[resource]
+script = ExtResource("1_nm5hp")
+texture = ExtResource("3_lifv3")
+hold = ExtResource("1_q1wj0")
+translation_id = "club"
+rarity = 1
+spawn_chance = 1.0
+tooltip = Array[ExtResource("4_0io76")]([SubResource("Resource_knyyj"), SubResource("Resource_xuq44"), SubResource("Resource_f6n44")])
+durability = 7
+throw_aerodynamicy = 12.0
+throw_damage = 12
+throw_straight = false
+throw_straight_offset = 45.0
+pierces = false
+melee_damage = 7
+melee_cooldown = 0.4
+melee_collision = SubResource("RectangleShape2D_poc85")

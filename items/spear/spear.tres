@@ -1,19 +1,32 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://cgvmdjiynl7cp"]
+[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://cgvmdjiynl7cp"]
 
 [ext_resource type="Script" path="res://items/item.gd" id="1_8qrxl"]
 [ext_resource type="PackedScene" uid="uid://b2ha85peeorkh" path="res://entities/held-item/swingable/pokable.tscn" id="1_kxrql"]
 [ext_resource type="Texture2D" uid="uid://0uhij1abcntm" path="res://items/spear/spear.png" id="2_p1hfh"]
 [ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_n8ofo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn7j7"]
+size = Vector2(30, 5)
+
+[sub_resource type="Resource" id="Resource_rok1r"]
+script = ExtResource("3_n8ofo")
+id = "melee_damage"
+value = "3"
+
 [sub_resource type="Resource" id="Resource_gcftl"]
 script = ExtResource("3_n8ofo")
 id = "throwing_damage"
-value = "12"
+value = "9"
 
 [sub_resource type="Resource" id="Resource_xxebv"]
 script = ExtResource("3_n8ofo")
 id = "durability"
 value = "6"
+
+[sub_resource type="Resource" id="Resource_tstx2"]
+script = ExtResource("3_n8ofo")
+id = "pierces"
+value = ""
 
 [resource]
 script = ExtResource("1_8qrxl")
@@ -22,10 +35,13 @@ hold = ExtResource("1_kxrql")
 translation_id = "spear"
 rarity = 1
 spawn_chance = 1.0
-tooltip = Array[ExtResource("3_n8ofo")]([SubResource("Resource_gcftl"), SubResource("Resource_xxebv")])
+tooltip = Array[ExtResource("3_n8ofo")]([SubResource("Resource_rok1r"), SubResource("Resource_gcftl"), SubResource("Resource_xxebv"), SubResource("Resource_tstx2")])
+durability = 6
 throw_aerodynamicy = 12.0
-throw_damage = 12
+throw_damage = 9
 throw_straight = true
 throw_straight_offset = 45.0
-pierces = false
-durability = 6
+pierces = true
+melee_damage = 3
+melee_cooldown = 0.4
+melee_collision = SubResource("RectangleShape2D_yn7j7")

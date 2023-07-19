@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bhp1wkdkq3e2p"]
+[gd_resource type="Resource" script_class="Item" load_steps=11 format=3 uid="uid://bhp1wkdkq3e2p"]
 
 [ext_resource type="Script" path="res://items/item.gd" id="1_fdc42"]
 [ext_resource type="PackedScene" uid="uid://cg3g7g6rq5my" path="res://entities/held-item/swingable/swingable.tscn" id="1_rd1vb"]
 [ext_resource type="Texture2D" uid="uid://bxqu5cqgcp8hy" path="res://items/rock/rock.png" id="2_r5yvk"]
 [ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_hkhqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8wbt"]
+
+[sub_resource type="Resource" id="Resource_e7nvm"]
+script = ExtResource("3_hkhqe")
+id = "melee_damage"
+value = "4"
 
 [sub_resource type="Resource" id="Resource_hvybo"]
 script = ExtResource("3_hkhqe")
@@ -32,10 +39,13 @@ hold = ExtResource("1_rd1vb")
 translation_id = "rock"
 rarity = 1
 spawn_chance = 1.0
-tooltip = Array[ExtResource("3_hkhqe")]([SubResource("Resource_hvybo"), SubResource("Resource_ctorn"), SubResource("Resource_rkioo"), SubResource("Resource_8l7e8")])
+tooltip = Array[ExtResource("3_hkhqe")]([SubResource("Resource_e7nvm"), SubResource("Resource_hvybo"), SubResource("Resource_ctorn"), SubResource("Resource_rkioo"), SubResource("Resource_8l7e8")])
+durability = -1
 throw_aerodynamicy = 32.0
 throw_damage = 5
 throw_straight = false
 throw_straight_offset = 0.0
 pierces = false
-durability = -1
+melee_damage = 4
+melee_cooldown = 0.4
+melee_collision = SubResource("RectangleShape2D_u8wbt")

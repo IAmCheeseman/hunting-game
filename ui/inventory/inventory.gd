@@ -7,12 +7,18 @@ const RECIPES := preload("res://items/recipes.tres")
 @onready var tooltip: Control = %Tooltip
 @onready var recipe_items := %RecipeItems
 @onready var recipes := %Recipes
+@onready var craft_button := %Craft
+@onready var crafting_menu := %CraftingMenu
+@onready var inventory_ui := %Inventory
 
 var open := false
 var selected_recipe: CraftingRecipe
 var selected := -1
+var is_crafting_menu_open := false
 
 func _ready() -> void:
+	craft_button.hide()
+	
 	Inventory.data.connect("items_changed", _on_items_changed)
 	_on_items_changed(null)
 
@@ -26,25 +32,42 @@ func _process(delta: float) -> void:
 		scale = scale.move_toward(Vector2.ONE, 12 * delta)
 	else:
 		scale = scale.move_toward(Vector2.ZERO, 24 * delta)
+	
+	if is_crafting_menu_open:
+		inventory_ui.hide()
+		crafting_menu.show()
+	else:
+		inventory_ui.show()
+		crafting_menu.hide()
 
 func _update_crafting_recipes() -> void:
 	Utils.free_children(recipes)
+	var can_craft := false
 	for i in RECIPES.recipes:
 		if not _can_craft(i):
 			continue
+		can_craft = true
 		var button := Button.new()
 		button.icon = i.creates.texture
 		button.pressed.connect(_select_recipe.bind(i))
 		button.custom_minimum_size = Vector2(16, 16)
 		recipes.add_child(button)
 	
+	if not can_craft:
+		var label = Label.new()
+		label.text = "ui.inventory.no_recipes"
+		recipes.add_child(label)
+	
 	if selected_recipe == null:
 		return
 	if not _can_craft(selected_recipe):
 		selected_recipe = null
+		craft_button.hide()
 		Utils.free_children(recipe_items)	
 
 func _select_recipe(recipe: CraftingRecipe) -> void:
+	craft_button.show()
+	
 	selected_recipe = recipe
 	Utils.free_children(recipe_items)
 	
@@ -80,6 +103,9 @@ func _craft() -> void:
 		Inventory.remove_items(i, 1)
 	Inventory.add_item(ItemState.new(recipe.creates))
 	_update_crafting_recipes()
+
+func _on_open_crafting_pressed() -> void:
+	is_crafting_menu_open = not is_crafting_menu_open
 
 func _on_items_changed(_item: ItemState) -> void:
 	_update_crafting_recipes()

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dncm7bc0foljg" path="res://ui/inventory/slot.png" id="3_obmdm"]
 
 [node name="Slot" type="Control"]
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

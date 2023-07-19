@@ -1,11 +1,24 @@
 extends HeldItem
 class_name Swingable
 
+@onready var hitbox := $Hitbox
+@onready var collision := $Hitbox/CollisionShape2D
+@onready var hit_timer := $Hit
+@onready var cooldown_timer := $Cooldown
+
 @export var swing_angle := 80.0
 
 var swing_dir := 1
 var swing_rot := deg_to_rad(swing_angle)
 var swing_flip := false
+
+func _ready() -> void:
+	super._ready()
+	var shape = item.item.melee_collision
+	collision.shape = shape
+	hitbox.position.x = shape.extents.x
+	hitbox.damage = item.item.melee_damage
+	cooldown_timer.wait_time = item.item.melee_cooldown
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -16,7 +29,11 @@ func _process(delta: float) -> void:
 		charge_animation()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("item_active"):
+	if event.is_action_pressed("item_active") and cooldown_timer.is_stopped():
+		collision.disabled = false
+		hit_timer.start()
+		cooldown_timer.start()
+		
 		swing_dir *= -1
 		swing_flip = not swing_flip
 
@@ -33,3 +50,7 @@ func swing_animation(delta: float) -> void:
 		sprite.flip_v = not swing_flip
 	else:
 		sprite.flip_v = swing_flip
+
+
+func _on_hit_timeout() -> void:
+	collision.disabled = true

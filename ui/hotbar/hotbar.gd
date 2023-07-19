@@ -1,9 +1,9 @@
-extends VBoxContainer
+extends MarginContainer
 
 const SLOT := preload("res://ui/hotbar/hotbar_slot.tscn")
 
-@onready var items := $Items
-@onready var item_name := $ItemName
+@onready var items := %Items
+@onready var item_name := %ItemName
 
 func _ready() -> void:
 	Inventory.data.connect("items_changed", _on_items_changed)

@@ -16,12 +16,21 @@ enum Rarity {
 @export var rarity: Rarity = Rarity.COMMON
 @export var spawn_chance: float = 1.0
 @export var tooltip: Array[TooltipData] = []
+
+@export var durability: int = -1
+
+@export_subgroup("Throwing", "throw")
 @export var throw_aerodynamicy := 12.0 
 @export var throw_damage: int = 5
 @export var throw_straight: bool = false
 @export var throw_straight_offset: float = 0
 @export var pierces: bool = false
-@export var durability: int = -1
+
+@export_subgroup("Melee", "melee")
+@export var melee_damage: int = 5
+@export var melee_cooldown: float = 0.4
+@export var melee_collision: RectangleShape2D
+
 
 func get_item_name() -> String:
 	return "item.%s.name" % translation_id
