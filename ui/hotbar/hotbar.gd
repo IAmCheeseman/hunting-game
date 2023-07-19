@@ -35,7 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Inventory.move_hotbar_slot(-1)
 		get_viewport().set_input_as_handled()
 	
-	if event.is_action_pressed("drop_item"):
+	if event.is_action_pressed("drop_item") and not GameManager.is_gui_open:
 		Inventory.drop_selected_item()
 	
 	for i in 4:
