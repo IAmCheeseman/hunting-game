@@ -18,4 +18,7 @@ spawn_chance = 1.0
 tooltip = Array[ExtResource("3_hy4xl")]([SubResource("Resource_ylvps")])
 throw_aerodynamicy = 64.0
 throw_damage = 1
+throw_straight = false
+throw_straight_offset = 0.0
+pierces = false
 durability = -1

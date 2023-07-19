@@ -30,4 +30,5 @@ throw_aerodynamicy = 12.0
 throw_damage = 6
 throw_straight = false
 throw_straight_offset = 0.0
+pierces = false
 durability = -1

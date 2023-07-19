@@ -4,6 +4,7 @@ const HOTBAR_TEXTURE := preload("res://ui/inventory/hotbar_slot.png")
 
 @onready var background: TextureRect = $Background
 @onready var icon: TextureRect = %Icon
+@onready var progress: ProgressBar = %Progress
 
 var item: ItemState
 var mouse_hovering := false
@@ -24,7 +25,12 @@ func _process(delta: float) -> void:
 	if mouse_hovering and not Input.is_action_pressed("move_item"):
 		target_scale = Vector2.ONE * 1.4
 	
-	scale = scale.move_toward(target_scale, 12 * delta)	
+	scale = scale.move_toward(target_scale, 12 * delta)
+	
+	progress.visible = false
+	if item:
+		progress.visible = item.item.durability != -1
+		progress.value = float(item.uses_left) / float(item.item.durability)
 
 func _on_mouse_entered() -> void:
 	mouse_hovering = true
