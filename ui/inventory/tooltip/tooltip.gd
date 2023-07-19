@@ -53,7 +53,17 @@ func _create_tooltip_element(element: TooltipData) -> HBoxContainer:
 	tooltip_element.label.label_settings = label_settings[element.id]
 	if element.value != "":
 		tooltip_element.label.text += ":"
+	
 	tooltip_element.value.text = tr(element.value)
+	if TranslationServer.get_locale() == "gb" and element.value != "":
+		var characters = [ "S", "f", "e", "DA", "tr", "f", "B", "O" ]
+		characters.shuffle()
+		for i in randi_range(0, 3):
+			characters.pop_back()
+		var str = ""
+		for i in characters:
+			str += i
+		tooltip_element.value.text = str
 	return tooltip_element
 
 func _update_tooltip() -> void:
