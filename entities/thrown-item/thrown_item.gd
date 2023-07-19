@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		var normal: Vector2 = raycast.get_collision_normal()
 		velocity = velocity.bounce(normal)
 		GameManager.camera.shake(2, 2, 4, 0.05, 0.2, true)
-		if item.take_damage():
+		if item.take_damage(2):
 			# This item should break
 			spark()
 			queue_free()
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hit(area) -> void:
-	if item.take_damage():
+	if item.take_damage(2):
 		# This item should break
 		spark()
 		queue_free()

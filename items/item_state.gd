@@ -12,8 +12,8 @@ func _init(item_: Item) -> void:
 	uses_left = item.durability
 
 ## Takes a point off the durability, returns true if the item broke.
-func take_damage() -> bool:
-	uses_left -= 1
+func take_damage(amount: int) -> bool:
+	uses_left -= amount
 	if uses_left <= 0 and item.durability > 0:
 		Utils.create_new_dialog("Your %s broke!" % tr(item.get_item_name()).to_lower())
 		return true

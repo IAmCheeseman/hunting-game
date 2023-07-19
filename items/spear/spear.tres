@@ -13,7 +13,7 @@ value = "12"
 [sub_resource type="Resource" id="Resource_xxebv"]
 script = ExtResource("3_n8ofo")
 id = "durability"
-value = "3"
+value = "6"
 
 [resource]
 script = ExtResource("1_8qrxl")
@@ -28,4 +28,4 @@ throw_damage = 12
 throw_straight = true
 throw_straight_offset = 45.0
 pierces = false
-durability = 3
+durability = 6
