@@ -14,6 +14,7 @@ func _ready() -> void:
 	text.text = "[center]%s[/center]" % target_text
 	timer.wait_time = speed
 	text.visible_characters = 1
+	layer = 10
 
 
 func advance_text() -> void:

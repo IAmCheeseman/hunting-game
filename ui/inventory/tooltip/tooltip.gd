@@ -8,6 +8,8 @@ var label_settings = {
 	"pierces": Color.GREEN,
 	"stuns": Color.CORNFLOWER_BLUE,
 	"element": Color.BEIGE,
+	"ammo": Color.AQUAMARINE,
+	"durability": Color.PALE_GREEN,
 }
 
 @onready var elements := %Elements

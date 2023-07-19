@@ -2,13 +2,13 @@ extends Control
 
 @onready var icon: TextureRect = %Icon
 
-var item: Item
+var item: ItemState
 
 func _ready() -> void:
 	if item == null:
 		icon.texture = null
 		return
-	icon.texture = item.texture
+	icon.texture = item.item.texture
 
 func _process(delta: float) -> void:
 	if get_index() == Inventory.data.current_slot:

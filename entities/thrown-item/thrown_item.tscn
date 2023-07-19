@@ -19,3 +19,5 @@ damage = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_q02nl")
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hit"]

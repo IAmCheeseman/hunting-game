@@ -18,19 +18,19 @@ enum Result {
 }
 
 ## Emitted when items are changed
-signal items_changed(item: Item)
+signal items_changed(item: ItemState)
 ## Emitted when an item is added
-signal added_item(item: Item)
+signal added_item(item: ItemState)
 ## Emitted when an item is removed
-signal removed_item(item: Item)
+signal removed_item(item: ItemState)
 ## Emitted when the current slot changes
-signal hotbar_item_changed(item: Item)
+signal hotbar_item_changed(item: ItemState)
 
 static var data: Inventory ## The current player's inventory.
-var mouse_slot: Item ## The mouse slot.
+var mouse_slot: ItemState ## The mouse slot.
 var current_slot := 0 ## The current hotbar slot.
 var _mouse_index := 0
-var _items: Array[Item] = []
+var _items: Array[ItemState] = []
 
 func _init() -> void:
 	data = self
@@ -47,7 +47,7 @@ func _get_open_slot() -> int:
 	return -1
 
 ## Adds one instance of item to the inventory.
-static func add_item(item: Item) -> Result:
+static func add_item(item: ItemState) -> Result:
 	var slot := data._get_open_slot()
 	if slot == -1:
 		return Result.NO_SPACE
@@ -56,24 +56,29 @@ static func add_item(item: Item) -> Result:
 	data.emit_signal("added_item", item)
 	return Result.OK
 
+## Gets the amount of this item in your inventory.
+static func count_item(item: Item) -> int:
+	var count := 0
+	for i in data._items:
+		if i == null:
+			continue
+		if i.item == item:
+			count += 1
+	return count
+
 ## Removes a specified amount of items from the inventory.
 static func remove_items(item: Item, count: int = 1) -> Result:
-	var slots = []
-	var removed = 0
-	while removed < count:
-		var slot = data._get_item_slot(item)
-		if slot == null:
-			return Result.NO_ITEM
-		removed += slot.count
-		slots.append(slot)
-	
-	var to_go = count
-	for slot in slots:
-		slot.count -= to_go
-		to_go = abs(slot.count)
-	
-	data.emit_signal("items_changed", item)
-	data.emit_signal("removed_item", item, count)
+	for i in count:
+		var index = -1
+		for j in data._items:
+			index += 1
+			if j == null:
+				continue
+			if j.item == item:
+				data._items[index] = null
+				data.emit_signal("items_changed", j)
+				data.emit_signal("removed_item", j)
+				break
 	
 	return Result.OK
 
@@ -114,7 +119,7 @@ static func drop_selected_item() -> void:
 	if selected == null:
 		return
 	
-	var item = Item.create_drop(selected)
+	var item = Item.create_drop_from(selected)
 	item.global_position = GameManager.player.global_position
 	item.velocity = GameManager.player.global_position.direction_to(
 		GameManager.player.get_global_mouse_position()) * 100
@@ -149,9 +154,9 @@ static func remove_hotbar_item() -> void:
 	data.emit_signal("removed_item", item)
 
 ## Returns the item you are currently holding.
-static func get_selected_hotbar_item() -> Item:
+static func get_selected_hotbar_item() -> ItemState:
 	return data._items[data.current_slot]
 
 ## Returns a copy of the inventory.
-static func get_inventory_snapshot() -> Array[Item]:
+static func get_inventory_snapshot() -> Array[ItemState]:
 	return data._items.duplicate()

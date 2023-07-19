@@ -5,7 +5,7 @@ const HOTBAR_TEXTURE := preload("res://ui/inventory/hotbar_slot.png")
 @onready var background: TextureRect = $Background
 @onready var icon: TextureRect = %Icon
 
-var item: Item
+var item: ItemState
 var mouse_hovering := false
 
 signal hover_updated(slot: Control)
@@ -14,7 +14,7 @@ func _ready() -> void:
 	if item == null:
 		icon.texture = null
 		return
-	icon.texture = item.texture
+	icon.texture = item.item.texture
 
 func _process(delta: float) -> void:
 	if get_index() < Inventory.HOTBAR_END:

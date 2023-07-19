@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkegvft8gph1q"]
+
+[ext_resource type="PackedScene" uid="uid://dfi4e8kxc6pn5" path="res://world/props/prop.tscn" id="1_geude"]
+[ext_resource type="Texture2D" uid="uid://d1c6qxine2arp" path="res://world/props/grass/grass.png" id="2_aw4s4"]
+[ext_resource type="Resource" uid="uid://ccqy4200jknca" path="res://items/fiber/fiber.tres" id="2_wv0ph"]
+
+[node name="Grass" instance=ExtResource("1_geude")]
+item = ExtResource("2_wv0ph")
+spawn_min = 0
+spawn_max = 1
+
+[node name="Marker2D1" type="Marker2D" parent="PropPositions" index="0"]
+position = Vector2(10, 3)
+
+[node name="Marker2D2" type="Marker2D" parent="PropPositions" index="1"]
+position = Vector2(-15, -2)
+
+[node name="Marker2D3" type="Marker2D" parent="PropPositions" index="2"]
+position = Vector2(16, -7)
+
+[node name="Marker2D4" type="Marker2D" parent="PropPositions" index="3"]
+position = Vector2(-5, 6)
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_aw4s4")
+offset = Vector2(0, -16)

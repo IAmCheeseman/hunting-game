@@ -24,11 +24,11 @@ func _ready() -> void:
 	GameManager.camera = self
 	
 	_jump_timer = _set_up_timer()
-	_jump_timer.connect("timeout", Callable(self, "jump"))
+	_jump_timer.connect("timeout", _jump)
 	_shake_timer = _set_up_timer()
-	_shake_timer.connect("timeout", Callable(self, "reset"))
+	_shake_timer.connect("timeout", reset)
 	
-	reset()
+	reset() 
 
 
 func _process(delta: float) -> void:

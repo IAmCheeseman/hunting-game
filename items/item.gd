@@ -13,11 +13,15 @@ enum Rarity {
 @export var texture: Texture2D
 @export var hold: PackedScene
 @export var translation_id: String
-@export var throw_aerodynamicy := 12.0 
-@export var throw_damage: int = 5
 @export var rarity: Rarity = Rarity.COMMON
 @export var spawn_chance: float = 1.0
 @export var tooltip: Array[TooltipData] = []
+@export var throw_aerodynamicy := 12.0 
+@export var throw_damage: int = 5
+@export var throw_straight: bool = false
+@export var throw_straight_offset: float = 0
+@export var pierces: bool = false
+@export var durability: int = -1
 
 func get_item_name() -> String:
 	return "item.%s.name" % translation_id
@@ -43,6 +47,11 @@ func get_tooltip() -> String:
 	return tooltip_str
 
 static func create_drop(item: Item) -> CharacterBody2D:
+	var drop = DROPPED_ITEM.instantiate()
+	drop.item = ItemState.new(item)
+	return drop
+
+static func create_drop_from(item: ItemState) -> CharacterBody2D:
 	var drop = DROPPED_ITEM.instantiate()
 	drop.item = item
 	return drop

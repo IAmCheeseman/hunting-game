@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://ccqy4200jknca"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_uedxr"]
+[ext_resource type="Texture2D" uid="uid://bk7113waorsc8" path="res://items/fiber/fiber.png" id="2_v216q"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_hy4xl"]
+
+[sub_resource type="Resource" id="Resource_ylvps"]
+script = ExtResource("3_hy4xl")
+id = "element"
+value = ""
+
+[resource]
+script = ExtResource("1_uedxr")
+texture = ExtResource("2_v216q")
+translation_id = "fiber"
+rarity = 0
+spawn_chance = 1.0
+tooltip = Array[ExtResource("3_hy4xl")]([SubResource("Resource_ylvps")])
+throw_aerodynamicy = 64.0
+throw_damage = 1
+durability = -1

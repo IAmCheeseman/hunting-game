@@ -9,7 +9,7 @@ static func free_children(node: Node) -> void:
 static func get_random(from: Array):
 	return from[randf() * from.size()]
 
-static func create_new_dialog(text: String, speed:=0.05) -> CanvasLayer:
+static func create_new_dialog(text: String, speed:=0.01) -> CanvasLayer:
 	var new_dialog = preload("res://tools/dialog/dialog.tscn").instantiate()
 	new_dialog.target_text = text
 	new_dialog.speed = speed

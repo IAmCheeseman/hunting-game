@@ -92,7 +92,7 @@ script = ExtResource("2_wpprg")
 run_speed = 200.0
 tired_speed = 80.0
 stamina_regen_rate = 30.0
-run_stamina = 40.0
+run_stamina = 45.0
 speed = 110.0
 accel = 350.0
 frict = 450.0
@@ -134,6 +134,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Stamina" type="ProgressBar" parent="." index="8"]
+z_index = 4096
 offset_left = -13.0
 offset_top = -19.0
 offset_right = 13.0

@@ -29,7 +29,13 @@ static var PROPS: Array[PropData] = [
 	PropData.new(
 		preload("res://world/props/rock/rock.tscn"),
 		0.5,
+		7,
+		func(x): return ceil(x * 2)
+	),
+	PropData.new(
+		preload("res://world/props/grass/grass.tscn"),
+		0.5,
 		5,
-		func(x): return ceil(x * 3)
+		func(x): return ceil(x * 12)
 	)
 ]

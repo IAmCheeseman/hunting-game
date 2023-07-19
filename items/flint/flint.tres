@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://covu1y3cykcm2"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_jachi"]
+[ext_resource type="Texture2D" uid="uid://c2teah0kuyysw" path="res://items/flint/flint.png" id="2_x6dhw"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_cuomw"]
+
+[sub_resource type="Resource" id="Resource_56xi1"]
+script = ExtResource("3_cuomw")
+id = "throwing_damage"
+value = "6"
+
+[sub_resource type="Resource" id="Resource_yjd30"]
+script = ExtResource("3_cuomw")
+id = "element"
+value = ""
+
+[sub_resource type="Resource" id="Resource_m3gnj"]
+script = ExtResource("3_cuomw")
+id = "ammo"
+value = ""
+
+[resource]
+script = ExtResource("1_jachi")
+texture = ExtResource("2_x6dhw")
+translation_id = "flint"
+rarity = 0
+spawn_chance = 1.0
+tooltip = Array[ExtResource("3_cuomw")]([SubResource("Resource_56xi1"), SubResource("Resource_yjd30"), SubResource("Resource_m3gnj")])
+throw_aerodynamicy = 12.0
+throw_damage = 6
+throw_straight = false
+throw_straight_offset = 0.0
+durability = -1

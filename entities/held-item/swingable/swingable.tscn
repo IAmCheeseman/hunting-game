@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg3g7g6rq5my"]
+
+[ext_resource type="PackedScene" uid="uid://bh3elvg8jkwtq" path="res://entities/held-item/held_item.tscn" id="1_wigf8"]
+[ext_resource type="Script" path="res://entities/held-item/swingable/swingable.gd" id="2_ofgy6"]
+
+[node name="Swingable" instance=ExtResource("1_wigf8")]
+script = ExtResource("2_ofgy6")
+swing_angle = 80.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ha85peeorkh"]
+
+[ext_resource type="PackedScene" uid="uid://cg3g7g6rq5my" path="res://entities/held-item/swingable/swingable.tscn" id="1_22gm3"]
+[ext_resource type="Script" path="res://entities/held-item/swingable/pokable.gd" id="2_rc61q"]
+
+[node name="Pokable" instance=ExtResource("1_22gm3")]
+script = ExtResource("2_rc61q")

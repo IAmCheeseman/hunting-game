@@ -9,9 +9,9 @@ const MAX_ITEM_COUNT = 150
 @onready var sprite: Sprite2D = $Sprite
 @onready var player_detection: Area2D = $PlayerDetection
 
-@export var item: Item
 @export var allowed_rotation: bool = true
 
+var item: ItemState
 var speed := 0.0
 var can_pick_up := false
 
@@ -30,14 +30,13 @@ func _make_space() -> void:
 		if is_instance_valid(drop):
 			continue
 		items.erase(drop)
-	
 	if items.size() > MAX_ITEM_COUNT: # Keep this stuff performant
 		var drop = items.pop_front()
 		drop.queue_free()
 
 func _ready() -> void:
 	global_position = global_position.round()
-	sprite.texture = item.texture
+	sprite.texture = item.item.texture
 	sprite.material = sprite.material.duplicate()
 	
 	if allowed_rotation:
@@ -60,7 +59,7 @@ func _default_process(delta: float) -> void:
 		return
 	
 	var mouse_close_enough := \
-		get_local_mouse_position().length() < item.texture.get_width()
+		get_local_mouse_position().length() < item.item.texture.get_width()
 	var mouse_clicked := Input.is_action_just_pressed("pick_up")
 	if mouse_close_enough and mouse_clicked and not GameManager.is_gui_open:
 		if Inventory.add_item(item) == Inventory.Result.OK:

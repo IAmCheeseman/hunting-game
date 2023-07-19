@@ -11,7 +11,7 @@ func _ready() -> void:
 	Inventory.data.connect("hotbar_item_changed", _on_hotbar_slot_changed)
 	_on_items_changed(null)
 
-func _on_items_changed(_item: Item) -> void:
+func _on_items_changed(_item: ItemState) -> void:
 	Utils.free_children(items)
 	
 	var inventory = Inventory.get_inventory_snapshot()
@@ -20,10 +20,10 @@ func _on_items_changed(_item: Item) -> void:
 		slot.item = inventory[i]
 		items.add_child(slot)
 
-func _on_hotbar_slot_changed(_item: Item) -> void:
+func _on_hotbar_slot_changed(_item: ItemState) -> void:
 	var item := Inventory.get_selected_hotbar_item()
 	if item != null:
-		item_name.text = item.get_item_name()
+		item_name.text = item.item.get_item_name()
 	else:
 		item_name.text = ""
 
