@@ -21,4 +21,5 @@ one_shot = true
 [node name="Cooldown" type="Timer" parent="." index="3"]
 one_shot = true
 
+[connection signal="hit" from="Hitbox" to="." method="_on_hit"]
 [connection signal="timeout" from="Hit" to="." method="_on_hit_timeout"]

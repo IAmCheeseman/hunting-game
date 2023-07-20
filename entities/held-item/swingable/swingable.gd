@@ -54,3 +54,6 @@ func swing_animation(delta: float) -> void:
 
 func _on_hit_timeout() -> void:
 	collision.disabled = true
+
+func _on_hit(area) -> void:
+	item.take_damage(1)
