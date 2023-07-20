@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://dtoqptj4mq3b6"]
+
+[ext_resource type="PackedScene" uid="uid://b2ha85peeorkh" path="res://entities/held-item/swingable/pokable.tscn" id="1_8745d"]
+[ext_resource type="Script" path="res://items/item.gd" id="1_ihi2k"]
+[ext_resource type="Texture2D" uid="uid://cqd57btewhjmu" path="res://items/dagger/dagger.png" id="3_wqutf"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="4_pymtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i3x6"]
+size = Vector2(30, 5)
+
+[sub_resource type="Resource" id="Resource_erm3y"]
+script = ExtResource("4_pymtd")
+id = "melee_damage"
+value = "3"
+
+[sub_resource type="Resource" id="Resource_y12yq"]
+script = ExtResource("4_pymtd")
+id = "throwing_damage"
+value = "13"
+
+[sub_resource type="Resource" id="Resource_m4tng"]
+script = ExtResource("4_pymtd")
+id = "durability"
+value = "4"
+
+[sub_resource type="Resource" id="Resource_kjdcr"]
+script = ExtResource("4_pymtd")
+id = "ammo"
+value = ""
+
+[resource]
+script = ExtResource("1_ihi2k")
+texture = ExtResource("3_wqutf")
+hold = ExtResource("1_8745d")
+translation_id = "dagger"
+rarity = 1
+spawn_chance = 1.0
+tooltip = Array[ExtResource("4_pymtd")]([SubResource("Resource_erm3y"), SubResource("Resource_y12yq"), SubResource("Resource_m4tng"), SubResource("Resource_kjdcr")])
+durability = 4
+throw_aerodynamicy = 6.0
+throw_damage = 13
+throw_straight = true
+throw_straight_offset = 45.0
+pierces = false
+melee_damage = 3
+melee_cooldown = 0.1
+melee_collision = SubResource("RectangleShape2D_1i3x6")
