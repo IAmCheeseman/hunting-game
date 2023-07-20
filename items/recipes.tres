@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Crafting" load_steps=12 format=3 uid="uid://dohg56n8ktn8r"]
+[gd_resource type="Resource" script_class="Crafting" load_steps=14 format=3 uid="uid://dohg56n8ktn8r"]
 
 [ext_resource type="Resource" uid="uid://cgvmdjiynl7cp" path="res://items/spear/spear.tres" id="1_0yune"]
 [ext_resource type="Resource" uid="uid://ckccukxfwq7v4" path="res://items/stick/stick.tres" id="1_famx4"]
@@ -8,22 +8,32 @@
 [ext_resource type="Script" path="res://items/crafting.gd" id="4_arvkg"]
 [ext_resource type="Resource" uid="uid://covu1y3cykcm2" path="res://items/flint/flint.tres" id="6_lqgck"]
 [ext_resource type="Resource" uid="uid://c3dbampkfxnbh" path="res://items/club/club.tres" id="7_erdtq"]
+[ext_resource type="Resource" uid="uid://ct8c2uaydtgmf" path="res://items/arrow/arrow.tres" id="8_b03p6"]
 
 [sub_resource type="Resource" id="Resource_6jp3j"]
 script = ExtResource("3_lstxt")
 items = Array[Resource("res://items/item.gd")]([ExtResource("1_famx4"), ExtResource("1_famx4"), ExtResource("3_e2o3v"), ExtResource("2_l76hi")])
 creates = ExtResource("1_0yune")
+amount = 1
 
 [sub_resource type="Resource" id="Resource_nlqme"]
 script = ExtResource("3_lstxt")
 items = Array[Resource("res://items/item.gd")]([ExtResource("2_l76hi"), ExtResource("2_l76hi")])
 creates = ExtResource("6_lqgck")
+amount = 2
 
 [sub_resource type="Resource" id="Resource_l6n3g"]
 script = ExtResource("3_lstxt")
 items = Array[Resource("res://items/item.gd")]([ExtResource("1_famx4"), ExtResource("1_famx4"), ExtResource("1_famx4"), ExtResource("3_e2o3v")])
 creates = ExtResource("7_erdtq")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_3y7u3"]
+script = ExtResource("3_lstxt")
+items = Array[Resource("res://items/item.gd")]([ExtResource("1_famx4"), ExtResource("6_lqgck")])
+creates = ExtResource("8_b03p6")
+amount = 1
 
 [resource]
 script = ExtResource("4_arvkg")
-recipes = Array[ExtResource("3_lstxt")]([SubResource("Resource_6jp3j"), SubResource("Resource_nlqme"), SubResource("Resource_l6n3g")])
+recipes = Array[ExtResource("3_lstxt")]([SubResource("Resource_6jp3j"), SubResource("Resource_nlqme"), SubResource("Resource_l6n3g"), SubResource("Resource_3y7u3")])

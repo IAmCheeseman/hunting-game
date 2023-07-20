@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://ct8c2uaydtgmf"]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_o6tx1"]
+[ext_resource type="Texture2D" uid="uid://bxewfgg6c5q0s" path="res://items/arrow/arrow.png" id="2_kxh12"]
+[ext_resource type="Script" path="res://items/tooltip_data.gd" id="3_i6jfi"]
+
+[sub_resource type="Resource" id="Resource_cs3le"]
+script = ExtResource("3_i6jfi")
+id = "ranged_damage"
+value = "10"
+
+[sub_resource type="Resource" id="Resource_ysvct"]
+script = ExtResource("3_i6jfi")
+id = "ammo"
+value = ""
+
+[resource]
+script = ExtResource("1_o6tx1")
+texture = ExtResource("2_kxh12")
+translation_id = "arrow"
+rarity = 0
+spawn_chance = 1.0
+tooltip = Array[ExtResource("3_i6jfi")]([SubResource("Resource_cs3le"), SubResource("Resource_ysvct")])
+durability = -1
+throw_aerodynamicy = 12.0
+throw_damage = 5
+throw_straight = false
+throw_straight_offset = 0.0
+pierces = true
+melee_damage = 5
+melee_cooldown = 0.4

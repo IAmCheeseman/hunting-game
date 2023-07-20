@@ -72,7 +72,14 @@ func _select_recipe(recipe: CraftingRecipe) -> void:
 	Utils.free_children(recipe_items)
 	
 	var label := Label.new()
-	label.text = "%s:" % tr(recipe.creates.get_item_name())
+	
+	if recipe.amount > 1:
+		label.text = "%s x%d:" % [
+			tr(recipe.creates.get_item_name()), 
+			recipe.amount]
+	else:
+		label.text = "%s:" % tr(recipe.creates.get_item_name())
+	
 	label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 	recipe_items.add_child(label)
 	
@@ -95,13 +102,21 @@ func _can_craft(recipe) -> bool:
 			return false
 	return true
 
-func _craft() -> void:
+func _craft(times: int = 0) -> void:
 	if selected_recipe == null:
 		return
 	var recipe := selected_recipe 
-	for i in recipe.items:
-		Inventory.remove_items(i, 1)
-	Inventory.add_item(ItemState.new(recipe.creates))
+	
+	for j in recipe.amount:
+		for i in recipe.items:
+			Inventory.remove_items(i, 1)
+		
+		var item := ItemState.new(recipe.creates)
+		if Inventory.add_item(item) != Inventory.Result.OK:
+			var drop = Item.create_drop_from(item)
+			drop.global_position = GameManager.player.global_position
+			GameManager.world.add_child(drop)
+	
 	_update_crafting_recipes()
 
 func _on_open_crafting_pressed() -> void:
