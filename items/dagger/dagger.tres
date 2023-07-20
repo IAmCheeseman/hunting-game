@@ -11,17 +11,17 @@ size = Vector2(30, 5)
 [sub_resource type="Resource" id="Resource_erm3y"]
 script = ExtResource("4_pymtd")
 id = "melee_damage"
-value = "3"
+value = "6"
 
 [sub_resource type="Resource" id="Resource_y12yq"]
 script = ExtResource("4_pymtd")
 id = "throwing_damage"
-value = "13"
+value = "5"
 
 [sub_resource type="Resource" id="Resource_m4tng"]
 script = ExtResource("4_pymtd")
 id = "durability"
-value = "4"
+value = "15"
 
 [sub_resource type="Resource" id="Resource_kjdcr"]
 script = ExtResource("4_pymtd")
@@ -36,12 +36,12 @@ translation_id = "dagger"
 rarity = 1
 spawn_chance = 1.0
 tooltip = Array[ExtResource("4_pymtd")]([SubResource("Resource_erm3y"), SubResource("Resource_y12yq"), SubResource("Resource_m4tng"), SubResource("Resource_kjdcr")])
-durability = 4
+durability = 15
 throw_aerodynamicy = 6.0
-throw_damage = 13
+throw_damage = 5
 throw_straight = true
 throw_straight_offset = 45.0
 pierces = false
-melee_damage = 3
+melee_damage = 6
 melee_cooldown = 0.1
 melee_collision = SubResource("RectangleShape2D_1i3x6")
