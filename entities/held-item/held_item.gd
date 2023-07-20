@@ -19,7 +19,7 @@ func _ready() -> void:
 func _snap_rotation() -> void:
 	sprite.flip_v = get_global_mouse_position().x < global_position.x
 	if not sprite.flip_v:
-		sprite.rotation *= -1
+			sprite.rotation *= -1
 	if item.item.throw_straight and charge != 0:
 		sprite.flip_v = not sprite.flip_v
 

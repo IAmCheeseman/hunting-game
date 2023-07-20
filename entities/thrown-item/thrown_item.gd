@@ -8,11 +8,12 @@ const SPARKS := preload("res://effects/sparks/sparks.tscn")
 
 var aerodynamicy: float 
 var damage: float
+var ranged_damage := 0.0
 
 var item: ItemState
 
 func _ready() -> void:
-	hitbox.damage = damage
+	hitbox.damage = damage + ranged_damage
 	sprite.texture = item.item.texture
 	sprite.position.y = -8
 	GameManager.camera.shake(1, 2, 4, 0.05, 0.1, true)

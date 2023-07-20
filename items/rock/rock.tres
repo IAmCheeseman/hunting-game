@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_e7nvm"]
 script = ExtResource("3_hkhqe")
-id = "melee_damage"
+id = "damage"
 value = "4"
 
 [sub_resource type="Resource" id="Resource_hvybo"]

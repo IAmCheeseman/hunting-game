@@ -10,7 +10,7 @@ size = Vector2(30, 5)
 
 [sub_resource type="Resource" id="Resource_rok1r"]
 script = ExtResource("3_n8ofo")
-id = "melee_damage"
+id = "damage"
 value = "3"
 
 [sub_resource type="Resource" id="Resource_gcftl"]

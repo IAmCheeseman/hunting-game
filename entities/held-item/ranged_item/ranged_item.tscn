@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3fjim8wkagcv"]
+
+[ext_resource type="PackedScene" uid="uid://bh3elvg8jkwtq" path="res://entities/held-item/held_item.tscn" id="1_isemk"]
+[ext_resource type="Script" path="res://entities/held-item/ranged_item/ranged_item.gd" id="2_pcbj6"]
+
+[node name="RangedItem" instance=ExtResource("1_isemk")]
+script = ExtResource("2_pcbj6")
+ammo = Array[Resource("res://items/item.gd")]([])
+projectile_speed = 600.0

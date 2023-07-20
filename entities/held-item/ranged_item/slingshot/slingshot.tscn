@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjuqldwriniam"]
+
+[ext_resource type="PackedScene" uid="uid://3fjim8wkagcv" path="res://entities/held-item/ranged_item/ranged_item.tscn" id="1_6lo3k"]
+[ext_resource type="Resource" uid="uid://bhp1wkdkq3e2p" path="res://items/rock/rock.tres" id="2_ofpux"]
+[ext_resource type="Resource" uid="uid://covu1y3cykcm2" path="res://items/flint/flint.tres" id="3_15vyt"]
+[ext_resource type="Resource" uid="uid://dtoqptj4mq3b6" path="res://items/dagger/dagger.tres" id="4_og8wv"]
+[ext_resource type="Texture2D" uid="uid://ws5kxu2yu355" path="res://items/slingshot/slingshot_pull.png" id="5_khjis"]
+
+[node name="Slingshot" instance=ExtResource("1_6lo3k")]
+ammo = Array[Resource("res://items/item.gd")]([ExtResource("2_ofpux"), ExtResource("3_15vyt"), ExtResource("4_og8wv")])
+projectile_speed = 600.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("5_khjis")
+hframes = 3

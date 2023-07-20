@@ -67,7 +67,7 @@ static func count_item(item: Item) -> int:
 	return count
 
 ## Removes a specified amount of items from the inventory.
-static func remove_items(item: Item, count: int = 1) -> Result:
+static func remove_items(item: Item, count: int = 1) -> ItemState:
 	for i in count:
 		var index = -1
 		for j in data._items:
@@ -78,9 +78,10 @@ static func remove_items(item: Item, count: int = 1) -> Result:
 				data._items[index] = null
 				data.emit_signal("items_changed", j)
 				data.emit_signal("removed_item", j)
+				if count == 1:
+					return j
 				break
-	
-	return Result.OK
+	return null
 
 ## Picks up the specified slot and puts it in the mouse slot.
 static func move_to_mouse_slot(index: int) -> Result:
