@@ -157,6 +157,18 @@ static func remove_hotbar_item() -> void:
 static func get_selected_hotbar_item() -> ItemState:
 	return data._items[data.current_slot]
 
+## Removes the passed item state
+static func remove_item_state(item: ItemState) -> Result:
+	var index = 0
+	for i in data._items:
+		if i == item:
+			data._items[index] = null
+			data.emit_signal("items_changed", item)
+			data.emit_signal("removed_item", item)
+			return Result.OK
+		index += 1
+	return Result.NO_ITEM
+
 ## Returns a copy of the inventory.
 static func get_inventory_snapshot() -> Array[ItemState]:
 	return data._items.duplicate()

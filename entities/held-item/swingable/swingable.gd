@@ -1,6 +1,8 @@
 extends HeldItem
 class_name Swingable
 
+const SPARKS := preload("res://effects/sparks/sparks.tscn")
+
 @onready var hitbox := $Hitbox
 @onready var collision := $Hitbox/CollisionShape2D
 @onready var hit_timer := $Hit
@@ -56,4 +58,8 @@ func _on_hit_timeout() -> void:
 	collision.disabled = true
 
 func _on_hit(area) -> void:
-	item.take_damage(1)
+	if item.take_damage(1):
+		Inventory.remove_item_state(item)
+		var sparks := SPARKS.instantiate()
+		sparks.global_position = global_position
+		GameManager.world.add_child(sparks)
