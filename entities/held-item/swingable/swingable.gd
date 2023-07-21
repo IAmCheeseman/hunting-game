@@ -57,7 +57,7 @@ func swing_animation(delta: float) -> void:
 func _on_hit_timeout() -> void:
 	collision.disabled = true
 
-func _on_hit(area) -> void:
+func _on_hit(_area) -> void:
 	if item.take_damage(1):
 		Inventory.remove_item_state(item)
 		var sparks := SPARKS.instantiate()

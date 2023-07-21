@@ -60,10 +60,10 @@ func _create_tooltip_element(element: TooltipData) -> HBoxContainer:
 		characters.shuffle()
 		for i in randi_range(0, 3):
 			characters.pop_back()
-		var str = ""
+		var string = ""
 		for i in characters:
-			str += i
-		tooltip_element.value.text = str
+			string += i
+		tooltip_element.value.text = string
 	return tooltip_element
 
 func _update_tooltip() -> void:

@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _on_hit(area) -> void:
+func _on_hit(_area) -> void:
 	if item.take_damage(2):
 		# This item should break
 		spark()

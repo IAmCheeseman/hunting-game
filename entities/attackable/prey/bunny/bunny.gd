@@ -55,7 +55,7 @@ func _process_default(delta: float) -> void:
 	if is_instance_valid(player):
 		_state_machine.change_state(_s_scared)
  
-func _process_scared(delta: float) -> void:
+func _process_scared(_delta: float) -> void:
 	velocity = hop_direction * run_speed
 	sprite.scale.x = 1 if velocity.x < 0 else -1
 	anim.play("hop")

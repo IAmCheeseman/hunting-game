@@ -92,19 +92,19 @@ func _select_recipe(recipe: CraftingRecipe) -> void:
 		recipe_items.add_child(texture)
 
 func _can_craft(recipe) -> bool:
-	var items = {}
+	var owned_items = {}
 	for i in recipe.items:
-		if not items.has(i):
-			items[i] = 0
-		items[i] += 1
+		if not owned_items.has(i):
+			owned_items[i] = 0
+		owned_items[i] += 1
 	
 	# Verifying recipe can be made
-	for i in items.keys():
-		if Inventory.count_item(i) < items[i]:
+	for i in owned_items.keys():
+		if Inventory.count_item(i) < owned_items[i]:
 			return false
 	return true
 
-func _craft(times: int = 0) -> void:
+func _craft() -> void:
 	if selected_recipe == null:
 		return
 	var recipe := selected_recipe 
