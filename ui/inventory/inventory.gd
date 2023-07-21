@@ -49,6 +49,8 @@ func _update_crafting_recipes() -> void:
 		can_craft = true
 		var button := Button.new()
 		button.icon = i.creates.texture
+		button.text = i.creates.get_item_name()
+		button.alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		button.pressed.connect(_select_recipe.bind(i))
 		button.custom_minimum_size = Vector2(16, 16)
 		recipes.add_child(button)

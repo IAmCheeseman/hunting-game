@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dkldn22xdatv1"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dkldn22xdatv1"]
 
 [ext_resource type="FontFile" uid="uid://5cka6gvn7uk5" path="res://ui/font.ttf" id="1_17ad7"]
 [ext_resource type="Texture2D" uid="uid://dncm7bc0foljg" path="res://ui/inventory/slot.png" id="2_aoovo"]
@@ -11,9 +11,6 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-expand_margin_left = 4.0
-expand_margin_top = 3.0
-expand_margin_right = 4.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1itxg"]
@@ -22,9 +19,6 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-expand_margin_left = 4.0
-expand_margin_top = 3.0
-expand_margin_right = 4.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h07kv"]
@@ -49,6 +43,8 @@ anti_aliasing = false
 bg_color = Color(1, 1, 1, 1)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d23ab"]
+
 [resource]
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_17ad7")
@@ -66,3 +62,8 @@ RichTextLabel/font_sizes/italics_font_size = 8
 RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/italics_font = ExtResource("1_17ad7")
 RichTextLabel/fonts/normal_font = ExtResource("1_17ad7")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_d23ab")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_d23ab")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_d23ab")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_d23ab")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_d23ab")

@@ -2,7 +2,8 @@ extends Node2D
 class_name AnimalSpawner
 
 const ANIMALS: Array[PackedScene] = [
-	preload("res://entities/attackable/prey/bunny/bunny.tscn")
+	preload("res://entities/attackable/prey/bunny/bunny.tscn"),
+	preload("res://entities/attackable/prey/deer/deer.tscn"),
 ]
 
 var _spawn_timer := Timer.new()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c434voice7523"]
+[gd_scene load_steps=7 format=3 uid="uid://c434voice7523"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="1_e8a5y"]
 [ext_resource type="Theme" uid="uid://dkldn22xdatv1" path="res://ui/theme.tres" id="1_u3jiu"]
 [ext_resource type="PackedScene" uid="uid://dnsvlvh61hcfj" path="res://ui/inventory/mouse_slot.tscn" id="2_033bf"]
 [ext_resource type="PackedScene" uid="uid://cf5tbw0rc7afn" path="res://ui/inventory/slot.tscn" id="3_2wqwm"]
 [ext_resource type="PackedScene" uid="uid://b7lmdxjojvl7q" path="res://ui/inventory/tooltip/tooltip.tscn" id="3_kgsf8"]
+[ext_resource type="Texture2D" uid="uid://0uhij1abcntm" path="res://items/spear/spear.png" id="4_x3hq1"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -39,6 +40,7 @@ text = "ui.inventory.toggle_craft"
 
 [node name="Inventory" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -93,11 +95,11 @@ layout_mode = 2
 
 [node name="CraftingMenu" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/CraftingMenu"]
+clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -114,18 +116,32 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer"]
-clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Recipes" type="GridContainer" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Recipes" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipes"]
+layout_mode = 2
+icon = ExtResource("4_x3hq1")
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipes"]
+layout_mode = 2
+icon = ExtResource("4_x3hq1")
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipes"]
+layout_mode = 2
+icon = ExtResource("4_x3hq1")
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipes"]
+layout_mode = 2
+icon = ExtResource("4_x3hq1")
 
 [node name="RecipeItems" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CraftingMenu/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
