@@ -26,6 +26,12 @@ func _change_hop_direction() -> void:
 func _ready_() -> void:
 	_change_hop_direction()
 
+func _process(delta: float) -> void:
+	super._process(delta)
+	
+	if global_position.distance_to(GameManager.camera.global_position) > 640:
+		queue_free() 
+
 func _process_default(delta: float) -> void:
 	velocity = velocity.move_toward(hop_direction * wander_speed, accel * delta)
 	sprite.scale.x = 1 if velocity.x < 0 else -1

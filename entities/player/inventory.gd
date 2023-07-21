@@ -3,7 +3,7 @@ class_name Inventory
 
 ## Holds and manages items in an inventory.
 
-const SLOT_COUNT := 12 ## The amount of slots in the inventory.
+const SLOT_COUNT := 8 ## The amount of slots in the inventory.
 const HOTBAR_END := 4 ## The ending index of the hotbar
 
 enum Result {
